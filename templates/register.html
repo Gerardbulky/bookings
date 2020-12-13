@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h5 class="center-align">CREATE ACCOUNT</h5>
+<div class="row">
+    <!----------Users Usersname-------------->
+    <div class="col s12 m8 offset-m2">
+        <form class="card-panel">
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-user-plus prefix"></i>
+                    <input id="username" name="username" type="text" class="validate">
+                    <label for="username">Usersname</label>
+                </div>
+            </div>
+      <!----------Users password-------------->      
+            <div class="row">
+                <div class="input-field col s12 m6">
+                    <i class="fas fa-user-lock prefix"></i>
+                    <input id="password" name="password" type="password" class="validate">
+                    <label for="password">Password</label>
+                </div>       
+                <div class="input-field col s12 m6">
+                    <input id="repassword" name="repassword" type="password" class="validate">
+                    <label for="password">Repeat Password</label>
+                </div>
+            </div>
+       <!----------Users Checkbox-------------->     
+            <div class="row">
+                <div class="col s12">
+                    <p>
+                        <label>
+                            <input type="checkbox" />
+                            <span>I agree to the terms and conditions</span>
+                        </label>
+                    </p>
+                </div>
+            </div>
+        <!----------Users Submit button-------------->    
+            <div class="row">
+                <button type="submit" class="col s12 btn-large #2196f3 blue text-shadow">
+                    CREATE ACCOUNT <i class="fas fa-sign-in-alt"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
