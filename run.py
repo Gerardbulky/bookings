@@ -44,9 +44,8 @@ def regist():
         if password == confirm:
             register = {"username": username,
                         "password": generate_password_hash(
-                            password)
-                            } 
-            mongo.db.users.insert_one(register)  
+                            password)} 
+            mongo.db.users.insert_one(register) 
             
         # put the new user into 'session' cookie
             session["user"] = request.form.get("username").lower()
@@ -57,6 +56,30 @@ def regist():
 
     return render_template("register.html")
 
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        # CHECK IF USERNAME EXIST IN THE DB
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+
+        if existing_user:
+            # CHECKING IF HASHED PASSWORD MATCHES USERS INPUT   
+            if check_password_hash(
+                existing_user["password"], request.form.get("password")):
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome, {}".format(request.form.get("username")))
+            else:
+                # IF PASSWORD DOESN'T MATCH
+                flash("Invalid Password Match")
+                return redirect(url_for('login'))
+
+        else:
+            # IF USERNAME DOESN'T EXIST
+            flash("Incorrect Username and/or Password")
+            return redirect(url_for('login')) 
+    return render_template("login.html")
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

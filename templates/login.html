@@ -1,29 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h5 class="center-align">CREATE ACCOUNT</h5>
+    <h5 class="center-align">LOG IN</h5>
     <div class="row">
     <!----------Users Usersname-------------->
-    <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('regist') }}">
+    <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('login') }}">
         <div class="card-panel">
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-user-plus prefix"></i>
+                    <i class="fas fa-user-cog prefix"></i>
                     <input id="username" name="username" type="text" minlength="5" pattern="^[a-zA-Z0-9]{5,15}$" maxlength="15" class="validate" required>
                     <label for="username">Username</label>
                 </div>
             </div>
       <!----------Users password-------------->      
             <div class="row">
-                <div class="input-field col s12 m6">
+                <div class="input-field col s12">
                     <i class="fas fa-user-lock prefix"></i>
                     <input id="password" name="password" type="password" minlength="5" pattern="^[a-zA-Z0-9]{5,15}$" maxlength="15" class="validate" required>
                     <label for="password">Password</label>
-                </div>       
-                <div class="input-field col s12 m6">
-                    <input id="confirm" name="confirm" type="password" minlength="5" pattern="^[a-zA-Z0-9]{5,15}$" maxlength="15" class="validate" required>
-                    <label for="confirm">Confirm Password</label>
-                </div>
+                </div> 
             </div>
        <!----------Users Checkbox-------------->     
             <div class="row">
@@ -31,27 +27,28 @@
                     <p>
                         <label>
                             <input type="checkbox" />
-                            <span>I agree to the terms and conditions</span>
+                            <span>Remember my password</span>
                         </label>
                     </p>
                 </div>
             </div>
-        <!----------Users Submit button-------------->    
+        <!----------Log In button-------------->    
             <div class="row">
                 <button type="submit" class="col s12 btn-large #2196f3 blue text-shadow">
-                    CREATE ACCOUNT <i class="fas fa-sign-in-alt"></i>
+                    LOG IN <i class="fas fa-sign-in-alt"></i>
                 </button>
             </div>
         </div>
     </form>
     </div>
 
-<!--chech this later-->
     <div class="row">
         <div class="col s12">
              <p class="center-align">
-              If You Already Have An Account  <a href="{{ url_for('login') }}" class="light-blue-text text-darken-4">LOG IN</a>
+               Are You A New Member  <a href="{{ url_for('regist') }}" class="light-blue-text text-darken-4">CREATE AN ACCOUNT</a>
              </p>  
         </div>
 
+    </div>
+    
 {% endblock %}

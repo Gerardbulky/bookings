@@ -19,9 +19,9 @@
                     <div class="col m4 l9">
                         <h4>SUPERCLEAN CLEANING SERVICE</h4>
                     </div>
-                    <div class="col m4 l1 hide-on-small-only"><a href=""><i class="fas fa-user"></i> SIGN IN </a></div>
+                    <div class="col m4 l1 hide-on-small-only"><a href="{{ url_for('login') }}"><i class="fas fa-user"></i> SIGN IN </a></div>
                     <div class="col m4 l1 hide-on-small-only"><a href="{{ url_for('regist') }}"><i class="fas fa-users"></i> REGISTER</a></div>
-                    <div class="col m4 l1 hide-on-small-only"><a href=""><i class="fas fa-sign-out-alt"></i> LOG OUT</a></div>
+                    <div class="col m4 l1 hide-on-small-only"><a href="#"><i class="fas fa-sign-out-alt"></i> LOG OUT</a></div>
                 </div>
             </div>
 
@@ -47,7 +47,7 @@
                         <li><a href="#">New Task</a></li>
                         <li><a href="#">Manage Categories</a></li>
                         <li><a href="#">Log Out</a></li>
-                        <li><a href="#">log In</a></li>
+                        <li><a href="{{ url_for('login') }}">log In</a></li>
                         <li><a href="{{ url_for('regist') }}">Register</a></li>
             </ul>
      </header>
