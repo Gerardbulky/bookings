@@ -29,23 +29,32 @@ def index():
 @app.route("/register", methods=["GET", "POST"])
 def regist():
     if request.method == "POST":
+        username = request.form.get("username").lower()
+        password = request.form.get("password")
+        confirm = request.form.get("confirm")
+
         # check if username already exists in db
         existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
+            {"username": username})
 
         if existing_user:
             flash("Username already exists")
-            return redirect(url_for("regist"))
+            return redirect(url_for('regist'))
 
-        register = {
-            "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password"))
-        }
-        mongo.db.users.insert_one(register)
-
+        if password == confirm:
+            register = {"username": username,
+                        "password": generate_password_hash(
+                            password)
+                            } 
+            mongo.db.users.insert_one(register)  
+            
         # put the new user into 'session' cookie
-        session["user"] = request.form.get("username").lower()
-        flash("Registration Successful!")
+            session["user"] = request.form.get("username").lower()
+            flash("Registration Successful!")
+
+        else:
+            flash("Passwords do not match.")
+
     return render_template("register.html")
 
 
