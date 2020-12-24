@@ -1,3 +1,15 @@
 .flashes h4 {
     line-height: 2;
 }
+body{
+    background-image: url(../images/cover.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.one{
+    color: black;
+}
+
+.upper{
+    columns: black;
+}
