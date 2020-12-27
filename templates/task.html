@@ -10,6 +10,7 @@
         {{ item.phone_number }} <br>
         {{ item.is_urgent }} <br>
     {% endfor %}-->
+    <h3 class="light-blue-text darken-4 center-align">All Tasks</h3>
 
     <div class="row">
         <div class="col s12 m8 offset-m2">
@@ -28,6 +29,7 @@
                         <span>{{ item.description }}</span>
                         <p>{{ item.address }}</p>
                         <p>{{ item.phone_number }}</p>
+                        <p><em>by: {{ item.created_by }}</em></p>
                     </div>
                   </li>
                 {% endfor %}

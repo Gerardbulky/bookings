@@ -78,7 +78,7 @@ def login():
             else:
                 # IF PASSWORD DOESN'T MATCH
                 flash("Invalid Password Match")
-                return redirect(url_for('login'))
+                return redirect(url_for('regist'))
 
         else:
             # IF USERNAME DOESN'T EXIST
@@ -107,8 +107,23 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/add_task")
+@app.route("/add_task", methods=["GET", "POST"])
 def add_task():
+    if request.method == "POST":
+        is_urgent = "on" if request.form.get("is_urgent") else "off"
+        task = {
+            "category_name": request.form.get("category_name"),
+            "description": request.form.get("description"),
+            "date": request.form.get("date"),
+            "address": request.form.get("address"),
+            "phone_number": request.form.get("phone_number"), 
+            "is_urgent": is_urgent,
+            "created_by": session["user"]
+        }
+        mongo.db.tasks.insert_one(task)
+        flash("Task Successfully Added")
+        return redirect(url_for("index"))
+
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("add_task.html", categori=categories)
 
