@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block content %}
+    
+    <h3 class="light-blue-text darken-4 center-align">Edit Task</h3>
+        
+    <!-----------------------submit button---------------------------------->
+<div class="row">
+    <form class="col s12 m8 offset-m2 card-panel grey lighten-5" method="POST" action="{{ url_for('edit_task', task_id=task._id) }}">
+        <div class="row">
+          <div class="input-field col s12">
+              <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
+                <select id="category_name" name="category_name" class="validate" required>
+                    <option value="" disabled selected>Choose your option</option>
+                    {% for categ in categori %}
+                        <option value="{{ categ.category_name }}">{{ categ.category_name }}</option>
+                    {% endfor %}
+                </select>
+              <label for="category_name"><strong class="light-blue-text"> Select Task </strong></label>
+          </div>
+        </div>
+        <!------------------Task Description---------------------------------->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-align-left prefix light-blue-text text-darken-4"></i>
+                <textarea id="description" type="text" name="description" 
+                minlength="5" maxlength="100" class="materialize-textarea validate" required></textarea>
+                <label for="description">
+                    Task Description</label>
+            </div>
+        </div>   
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-calendar-alt prefix light-blue-text text-darken-4"></i>
+                <input id="date" name="date" type="text" class="datepicker validate" required>
+                <label for="date">Date</label>
+            </div>
+        </div>
+        <!------------------Address---------------------------------->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
+                <textarea id="address" name="address" 
+                minlength="5" maxlength="50" class="materialize-textarea validate" required></textarea>
+                <label for="address">Address</label>
+            </div>
+        </div>
+        <!------------------Phone number---------------------------------->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-phone prefix light-blue-text text-darken-4"></i>
+                <textarea id="phone_number" name="phone_number" type="text" 
+                minlength="5" maxlength="15" class="materialize-textarea validate" required></textarea>
+                <label for="phone_number">Phone Number</label>
+            </div>
+        </div>
+        <!------------------Urgent  Toggle---------------------------------->
+        <div class="row">
+            <div class="input-field col s12">
+                <div class="switch">
+                    <div class="switch"> 
+                        <i class="fas fa-exclamation-circle prefix light-blue-text text-darken-4"></i>
+                          <label for="is_urgent">
+                          <input type="checkbox" id="is_urgent" name="is_urgent">
+                          <span class="lever"></span>
+                             Is Urgent
+                          </label>
+                    </div>     
+                </div>
+            </div>
+        </div>
+        <!------------------submit button---------------------------------->
+        <div class="row">
+            <div class="col s12 center-align">
+                <button type="submit" class="btn-large light-blue darken-1 text-shadow">
+                    Edit Task <i class="fas fa-edit right"></i>
+                       
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
