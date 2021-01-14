@@ -78,7 +78,7 @@ def login():
             else:
                 # IF PASSWORD DOESN'T MATCH
                 flash("Invalid Password Match")
-                return redirect(url_for('regist'))
+                return redirect(url_for('login'))
 
         else:
             # IF USERNAME DOESN'T EXIST
@@ -121,15 +121,15 @@ def add_task():
             "created_by": session["user"]
         }
         mongo.db.tasks.insert_one(task)
-        flash("Task Successfully Added")
+        flash("Booking Successfully Added")
         return redirect(url_for("index"))
 
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("add_task.html", categori=categories)
 
 
-@app.route("/edit_task/<task_id>", methods=["GET", "POST"]) 
-def edit_task(task_id):
+@app.route("/update_task/<task_id>", methods=["GET", "POST"]) 
+def update_task(task_id):
     if request.method == "POST":
         is_urgent = "on" if request.form.get("is_urgent") else "off"
         submit = {
@@ -142,58 +142,20 @@ def edit_task(task_id):
             "created_by": session["user"]
         }
         mongo.db.tasks.update({"_id": ObjectId(task_id)}, submit)
-        flash("Task Successfully Updated")
+        flash("Booking Successfully Updated")
+        return redirect(url_for("index"))
 
     task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)})   
     categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("edit_task.html", task=task, categori=categories)
+    return render_template("update_task.html", task=task, categori=categories)
 
 
 @app.route("/delete_task/<task_id>", methods=["POST"])
 def delete_task(task_id): 
     if request.method == "POST":
         mongo.db.tasks.remove({"_id": ObjectId(task_id)})
-        flash("Task Successfully Deleted")
+        flash("Booking Successfully Deleted")
     return redirect(url_for("index"))    
-
-
-@app.route("/get_categories")
-def get_categories():
-    categories = list(mongo.db.categories.find().sort("categories_name", 1))
-    return render_template("categories.html", categori=categories)
-
-
-@app.route("/add_category", methods=["GET", "POST"])
-def add_category():
-    if request.method == "POST":
-        category = {
-            "category_name": request.form.get("category_name")
-        }
-        mongo.db.categories.insert_one(category)
-        flash("New Category Added")
-        return redirect(url_for("get_categories"))
-
-    return render_template("add_category.html")
-
-
-@app.route("/edit_category/<category_id>", methods=["GET", "POST"])    
-def edit_category(category_id):
-    if request.method == "POST":
-        submit = {
-            "category_name": request.form.get("category_name")
-        }
-        mongo.db.categories.update({"_id": ObjectId(category_id)}, submit)
-        flash("Category Successfully Updated")
-        return redirect(url_for("get_categories"))
-    category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
-    return render_template("edit_category.html", categori=category)
-
-
-@app.route("/delete_category/<category_id>")
-def delete_category(category_id):
-    mongo.db.categories.remove({"_id": ObjectId(category_id)})
-    flash("Category Successfully Deleted") 
-    return redirect(url_for("get_categories"))
 
 
 if __name__ == "__main__":

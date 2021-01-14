@@ -22,3 +22,12 @@ body{
     line-height: 42px;
 }
 
+.foot {
+    display: flex;
+    min-height: 40vh;
+    flex-direction: column;
+  }
+
+.footy {
+    flex: 1 0 auto;
+  }

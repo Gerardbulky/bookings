@@ -42,16 +42,20 @@
                     CREATE ACCOUNT <i class="fas fa-sign-in-alt"></i>
                 </button>
             </div>
+        
+        <!----------CREATING AN ACCOUNT IF NEW MEMBER-------------->
+            <div class="row">
+                <div class="col s12">
+                    <p class="center-align">
+                        <strong class="pull-s2" > If You Already Have An Account   <a href="{{ url_for('login') }}"
+                                class="light-blue-text text-darken-4">LOG IN</a></strong>
+                    </p>
+                </div>
+            </div>
+
+
         </div>
     </form>
-    </div>
-
-<!--chech this later-->
-    <div class="row">
-        <div class="col s12">
-             <p class="center-align">
-             <strong> If You Already Have An Account <a href="{{ url_for('login') }}" class="light-blue-text text-darken-4">LOG IN</a></strong>
-             </p>  
-        </div>
+</div>
 
 {% endblock %}

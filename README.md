@@ -1,45 +1,81 @@
-<img src="https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png" style="margin: 0;">
+# Superclean Booking Service
 
-Welcome gerardambe,
+* This is a project built using, Html, Css, Materializecss, Javascript, MongoDB, Flask and Python.
+* it contains a header elament which contains the **Sign In Button** for users to sign into their accounts. **Register button** for users to create an account and **Sign Out buttons** that signs the users out from their accounts.
+* it also has a **Navigation Bar** that contains the Navigatation Menu such as **Home**, **Book A Clean**, that provides a task for users to select from the different cleaning options and **Profile**, that displays the users profile.
+* On the footer, there is a **Sign out** button which is displayed only on small devices.
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use.
+# UX
+* The site is meant for users who want to book a cleaning or want to book the service from a cleaning company. The user can achieve the possibilities of creating, updating, deleting data from the database. The site provides the user with a menu that contains a **Book A Clean** option for the users to book their cleanings.
+* As a user i can also delete informations by clicking on the delete button which will popup a message, asking the user to confirm the deleting process.
+* As a user i can also update informations by clicking on the update button which will redirect the user to an updating form. On the form, the user can cancel or continue with the update.
 
-## Gitpod Reminders
+<img src="static/images/screen2.jpg" width=300>
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+# Features
+In this section i will describe the different parts of the project.
 
-`python3 -m http.server`
+## Existing Features
+* The header contains the **TITLE, SIGNIN, REGISTER AND LOGOUT
+* The sign in contains a signin form which has a **username** and **password** for users to sign into their accounts.
+* The sign out allows users to sign out of their accounts.
+* The register contains a form that has a **username**, **password**, **confirm password** for users to create an account.
+* The navigation bar contains a **Home**, **Book A Clean** and **Profile** menu.
+* The **Home** contains all the bookings. And still on the home page, the user can **delete** or **update** informations already created.
+* The **delete** button when clicked asked the user to confirm the delete process.
+* The **update** button redirects the user into an update form for the users to update the information. The update form has **cancel** and **update** buttons.
+* The **cancel** button cancels the process and redirects the user back to the home page, while,
+* The **update** button, confirms the users update.
+* The **Book A Clean** provides a form for users to edit their booking. It has a **choose an option** for users to choose from the different cleanings. A **Task description** for users to describe their task. A **date** when they want their cleaning. An **address**, where to fill in their address, A **phone number** where to put their number and a **button** to click if its urgent.
+* Finally the **profile**, which shows the user's profile.
 
-A blue button should appear to click: *Make Public*,
+### Tecnology used
+* **CSS,HTML,JS and PYTHON**
+* **Materializecss** Is a framework used entirely to build the site. [Materializecss](https://materializecss.com/showcase.html).
+* **MongoDB** Is the datebase that store the informations [MongoDB](https://www.mongodb.com/)
+* **Flask** containS templating languages such as jinga and werkzeug that python is dependent on to function properly. [Flask](https://flask.palletsprojects.com/en/1.1.x/) 
+# Testing
+### BOOK A CLEAN:
+* Go to the "BOOK A CLEAN" page
+* Try submitting an empty form, an error message appears on the required fields saying "please fill out the fields"
+* Try filling the field with informations, the line turns green indicating the field has the required information.
+* Try leaving the the field without filling the information, it turns red indicating no information present.
+* Try filling all the fields and submitting it says "Booking Successful" and redirects you to the home page.
+### Home
+* Go to the "HOME PAGE"
+* Try clicking on the delete button, it popsup a message "Are you sure you want to delete this post" 
+* Try clicking on the delete on the popup message, it deletes the message and flashes "Booking Successfully Deleted".
+* Try clicking on the cancel button, it cancels and redirects you back to the home page.
+* Try clicking on the update button it opens the form to be updated.
+* Try clicking on the cancel button on the updated form, it brings you back to the home page.
+* Try updating the form and click on the update button, it flashes a message "Booking Successfully Updated" and redirects you back to the home page.
+* Try clicking the profile button which displays the users profile.
+* Try clicking on the LOGOUT button, it logs the user out of his/her account and flashes a message "You have been logged out".
+### ON different screen Sizes
+* On larger screens, the TITLE, SIGNIN, REGISTER and SIGNOUT buttons are displayed on the right, meanwhile, on the navigation menu, the HOME, BOOK A CLEAN and PROFILE are displayed to the right. The PROFILE is only displayed when the user is logged in.
+* On smaller screens, the Title occupies the full width, meanwhile the SIGNOUT button is displayed on the Footer of the page. The Navigation menu icon is on the right and when clicked displays the menu from the right which contains the HOME, BOOK A CLEAN, PROFILE AND LOGOUT.
 
-Another blue button should appear to click: *Open Browser*.
+# Deployment
+* The project was deployed to Heroku through the following stages.
+* Firstly, we newd to setup some files heroku need to run our app, they are called dependencies such as requirments.txt and Procfile. Then,
+* Go to Heroku and click on click on the button, "NEW", it provides you with an option to "Creat new app", click on it.
+* Fill in the App Name and your region or region closest to then click on "Creat App"
+* To connect the App, we can use Automatic Deployment from our GitHub repository by clicking on the "GitHub Connect to Github", it displays your GitHub profile then add your repository name then click the "Search" button.
+* When it finds your repo, click connect.
+* Click on "settings" tap on your app and click on "Reveal config vars" e.g The IP, PORT, SECRET_KEY, MONGO_URI, And finally the MONGO_DBNAME
+* Go back to your terminal and push the master branch by typing. git status, git add -A, git commit -m "comments", finally git push.
+* Finally, Go back to Heroku and "Enable Automatic Deploys" and then click "Deploy Branch" which will take a minute or two to build app.
+* Once is done you will see, your app was Successfully deployed.
+* The deployed site is now available and will automatically update when ever we push changes to the GitHub repository.
+* Here is a link to my deployed App. [https://git.heroku.com/booking-times.git](https://git.heroku.com/booking-times.git)
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+# CREDIT
+* I owe a big thanks to all those who supported me in one way or another.
+* Some ideas were obtained from materials at code institude.
+* Meanwhile, some ideas where obtained from a video i watched on [utube](https://www.youtube.com/watch?v=u0oDDZrDz9U&t=2531s) such as the popup messages.
 
-A blue button should appear to click: *Make Public*,
+### Media
+* The background photo was obtained from Can Stock Photo.
 
-Another blue button should appear to click: *Open Browser*.
-
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
-
-## Updates Since The Instructional Video
-
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
---------
-
-Happy coding!
+### Acknowledgements
+* My inspiration came from working as a cleaner in a cleaning company.

@@ -12,8 +12,7 @@ $(document).ready(function(){
             done: "Select"
         }
     });
-
-   
+ 
     /*
     vanilla JavaScript for MaterializeCSS initialization
 */
