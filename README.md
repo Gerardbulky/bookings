@@ -34,17 +34,21 @@ In this section i will describe the different parts of the project.
 * Finally the **profile**, which shows the user's profile.
 
 ### Tecnology used
-* **CSS,HTML,JS and PYTHON**
+* **CSS, HTML, JS and PYTHON**
 * **Materializecss** Is a framework used entirely to build the site. [Materializecss](https://materializecss.com/showcase.html).
 * **MongoDB** Is the datebase that store the informations [MongoDB](https://www.mongodb.com/)
-* **Flask** containS templating languages such as jinga and werkzeug that python is dependent on to function properly. [Flask](https://flask.palletsprojects.com/en/1.1.x/) 
+* **Flask** contains templating languages such as jinga and werkzeug that python is dependent on to function properly. [Flask](https://flask.palletsprojects.com/en/1.1.x/) 
 # Testing
+
+## Users Testing
+ The path through the website is Home, Book A Clean and profile.
 ### BOOK A CLEAN:
 * Go to the "BOOK A CLEAN" page
 * Try submitting an empty form, an error message appears on the required fields saying "please fill out the fields"
 * Try filling the field with informations, the line turns green indicating the field has the required information.
 * Try leaving the the field without filling the information, it turns red indicating no information present.
-* Try filling all the fields and submitting it says "Booking Successful" and redirects you to the home page.
+* try filling the fields with insufficient required information, it remains red.
+* Try filling all the fields and submitting it popsup a message saying "Booking Successful" and redirects you to the home page.
 ### Home
 * Go to the "HOME PAGE"
 * Try clicking on the delete button, it popsup a message "Are you sure you want to delete this post" 
@@ -61,17 +65,54 @@ In this section i will describe the different parts of the project.
 
 # Deployment
 * The project was deployed to Heroku through the following stages.
-* Firstly, I setup some files heroku needs to run my app, they are called dependencies such as requirments.txt and Procfile. Then,
-* Go to Heroku and click on click on the button, "NEW", it provides you with an option to "Creat new app", click on it.
-* Fill in the App Name and your region or region you are closest to, then click on "Creat App" button.
-* To connect the App, we can use Automatic Deployment from our GitHub repository by clicking on the "GitHub Connect to Github", it displays your GitHub profile then add your repository name then click the "Search" button.
-* When it finds your repo, click connect.
-* Click on "settings" tap on your app and click on "Reveal config vars". Fill in the IP, PORT, SECRET_KEY, MONGO_URI, And finally the MONGO_DBNAME
-* Go back to your terminal and push your code to the master branch by typing. git status, git add -A, git commit -m "comments", finally git push.
+* Firstly, I setup some files heroku needs to run my app, they are called dependencies such as requirments.txt and Procfile. 
+* On the terminal, type **pip3 freeze > requirments.txt** this will create a requirements.txt file.
+* On the terminal, type **echo web: python run.py > Procfile** this create the Procfile.
+* Git **add**, **commit** and **push** the file to GitHub.
+* Go to [Heroku website](https://dashboard.heroku.com/apps) and click on the button, **"NEW"**, it provides you with an option to "Creat new app", click on it.
+* Fill in the **App Name** and your **region or region you are closest to**, then click on "Creat App" button.
+* To connect the App, we can use **Automatic Deployment** from our GitHub repository by clicking on the **"GitHub Connect to Github"**, it displays your GitHub profile then add your repository name then click the "Search" button.
+* When it finds your repo, click **connect**.
+* Click on **"settings"** tap on your app and click on **"Reveal config vars"**. Fill in the config vars in the following ways.
+      
+               key    |     VALUE
+      --------------- |----------------------------------------------------------------------------------------------------------------------
+         DEBUG        |      FALSE 
+         IP           |      0.0.0.0
+         MONGO_URI    |      mongodb+srv://<username>:<password>@myfirstcluster.dgoye.mongodb.net/<database_name>?retryWrites=true&w=majority 
+         PORT         |      5000   
+         SECRET_KEY   |      <your_secret_key>
+         MONGO_DBNAME |      <your_database_name> 
+  
+* Go back to your terminal and push your code to the master branch by using the following **steps**. **git status, git add -A, git commit -m "comments", finally git push**.
 * Then, Go back to Heroku and "Enable Automatic Deploys" and then click "Deploy Branch" which will take a minute or two to build app.
 * Once is done you will see, "your app was Successfully deployed".
 * The deployed site is now available and will automatically update when ever we push changes to the GitHub repository.
 * Here is a link to my deployed project on Heroku. [https://booking-times.herokuapp.com/](https://booking-times.herokuapp.com/)
+
+## How to run this project locally
+To clone this project into your gitpod, you will need to,
+* Create a [Github Account](https://github.com/)
+* use a chrome browser.
+### Then follow these steps:
+
+* Install the [Gitpod Browser Extension for chrome](https://chrome.google.com/webstore/detail/gitpod-dev-environments-i/dodmmooeoklaejobgleioelladacbeki).
+* After installing restart the browser.
+* Log into [Gitpod](https://gitpod.io/) with your gitpod account.
+* Navigate to the [Project GitHub repository](https://github.com/gerardambe/bookings).
+* Click on the **"green button"** in the top right corner of the repository.
+* This will trigger a new gitpod workspace to be created from the code in github where you can work locally.
+
+### To work on the project code within a local IDE such as VSCode or Pycharm
+* Follow this link to the [Project GitHub repository](https://github.com/gerardambe/bookings)
+* Next to the **green button**, click **clone** or **download**
+* In the clone with HTTPs section,copy the clone URL for the repository.
+* In your local IDE open the terminal.
+* Change the current working directory to the location where you want the clone directory to be made.
+* Type **git clone** and paste the URL you copied. e.g  
+  **git clone https://github.com/gerardambe/bookings.git**
+* press **enter** and your local clone will be created.
+
 
 # CREDIT
 * I owe a big thanks to all those who supported me in one way or another.
