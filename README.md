@@ -71,7 +71,7 @@ In this section i will describe the different parts of the project.
 * Then, Go back to Heroku and "Enable Automatic Deploys" and then click "Deploy Branch" which will take a minute or two to build app.
 * Once is done you will see, "your app was Successfully deployed".
 * The deployed site is now available and will automatically update when ever we push changes to the GitHub repository.
-* Here is a link to my deployed App. [https://git.heroku.com/booking-times.git](https://git.heroku.com/booking-times.git)
+* Here is a link to my deployed project on Heroku. [https://booking-times.herokuapp.com/](https://booking-times.herokuapp.com/)
 
 # CREDIT
 * I owe a big thanks to all those who supported me in one way or another.
