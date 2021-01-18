@@ -127,6 +127,9 @@ To clone this project into your gitpod, you will need to,
   **git clone https://github.com/gerardambe/bookings.git**
 * press **enter** and your local clone will be created.
 
+# DEBUG
+### I encountered a difficulty in my code. the **heruko app** was working properly but the code on my github workspace wasn't, to resolve this,
+
 
 # CREDIT
 * I owe a big thanks to all those who supported me in one way or another.
