@@ -45,13 +45,37 @@ In this section i will describe the different parts of the project.
 * The **Book A Clean** provides a form for users to edit their booking. It has a **choose an option** for users to choose from the different cleanings. A **Task description** for users to describe elaborately what they want the company do for them. A **date** when they want their cleaning. An **address**, where to fill in their address, A **phone number** where to put their number and a **button** to click if the cleaning is urgent.
 * Finally the **profile**, which shows the user's profile.
 
-### Technology used
-* **CSS, HTML, JS and PYTHON**
-* **Materializecss** Is a framework used entirely to build the site. [Materializecss](https://materializecss.com/showcase.html).
-* **MongoDB** Is the document-based datebase that can stores our data across multiple servers in the cloud [Link](https://www.mongodb.com/)
-* **Flask** contains dependencies such werkzeug and jinga templating languages that python depends on to function properly. [Flask](https://flask.palletsprojects.com) 
-### Library
-* **flask-pymongo** is a third party library, that helps Flask to communicate with MongoDB and it is installed through **pip3 install flask-pymongo**
+# Technology used
+## Languages Used
+
+* **CSS**
+* **HTML**
+* **PYTHON**
+
+## Framework, Libraries and Programes Used
+**Materializecss:**
+* Is a framework used entirely to build the site. [Materializecss](https://materializecss.com/showcase.html).
+
+**MongoDB:** 
+* Is the document-based datebase that can stores our data across multiple servers in the cloud [Link](https://www.mongodb.com/)
+
+**Flask:** 
+* contains dependencies such werkzeug and jinga templating languages that python depends on to function properly. [Flask](https://flask.palletsprojects.com) 
+ 
+**flask-pymongo**
+* Is a third party library, that helps Flask to communicate with MongoDB and it is installed through **pip3 install flask-pymongo**
+
+**Balsamiq:**
+* Balsamiq was used to create the **wireframes** during the design process.
+
+**jQuery:**
+* jQuery came with the materialized bootstrap to make the navbar responsive and collapsible. 
+* It was also used to make the tooltip, in the urgent button display **urgent** when hover over.
+* It was used to make the tooltip in the urgent button to display on the **right**.
+* It was used to **initialise** the form page to make it **responsive**.
+* **modal** was used to trigger the buttons when clicked.
+* Was used to make the date picker responsive. 
+
 # Testing
 
 ## Users Testing
