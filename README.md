@@ -128,13 +128,16 @@ To clone this project into your gitpod, you will need to,
 * press **enter** and your local clone will be created.
 
 # DEBUG
-### The code i pushed on my master branch was working perfectly but the code on my workspace wasn't. To solve this problem i had to check the difference between the code on my master branch and that on my workspace if they were thesame. To do that i had to go through the following processes.
+The code i pushed on my master branch was working perfectly but the code on my workspace wasn't. To solve this problem i had to check the difference between the code on my master branch and that on my workspace if they were thesame. To do that i had to go through the following processes.
 * On the terminal, i wrote **git checkout -b diff**
 * **git branch**
 * **git add .**
 * **git commit -m "checking differences in code"**
 * **git push**
 * **git push --setupstream origin diff**
+* Go to **github.com**, sign in and click on the name of the repository.
+* click on the button, **compare and pull request**
+* scroll down and you will see the differences in the code in the master branch and the code you are working on in your workspace. 
 
 
 
