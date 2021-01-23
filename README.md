@@ -128,7 +128,14 @@ To clone this project into your gitpod, you will need to,
 * press **enter** and your local clone will be created.
 
 # DEBUG
-### I encountered a difficulty in my code. the **heruko app** was working properly but the code on my github workspace wasn't, to resolve this,
+### The code i pushed on my master branch was working perfectly but the code on my workspace wasn't. To solve this problem i had to check the difference between the code on my master branch and that on my workspace if they were thesame. To do that i had to go through the following processes.
+* On the terminal, i wrote **git checkout -b diff**
+* **git branch**
+* **git add .**
+* **git commit -m "checking differences in code"**
+* **git push**
+* **git push --setupstream origin diff**
+
 
 
 # CREDIT
