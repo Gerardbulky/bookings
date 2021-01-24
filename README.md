@@ -66,7 +66,7 @@ In this section i will describe the different parts of the project.
 * Is a third party library, that helps Flask to communicate with MongoDB and it is installed through **pip3 install flask-pymongo**
 
 **Balsamiq:**
-* Balsamiq was used to create the **wireframes** during the design process.
+* Balsamiq was used to create the **wireframes** during the design process. [balsamiq](https://balsamiq.com/wireframes/)
 
 **jQuery:**
 * jQuery came with the materialized bootstrap to make the navbar responsive and collapsible. 
