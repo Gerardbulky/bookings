@@ -147,7 +147,7 @@ def add_task():
             }
             mongo.db.tasks.insert_one(task)
 
-            msg = Message('Bokning mottagen', sender='info@nilssonsstadtjanst.se', recipients=[request.form.get("email")])
+            msg = Message('Bokning mottagen', sender='info@nilssonstadtjanst.se', recipients=[request.form.get("email")])
             msg.body = 'Du har bokat: {} \n description: {} \n Tid och datum: {} \n Address: {} \n email: {} \n Telefonnummer: {} \n'.format(request.form.get("category_name"),request.form.get("description"),request.form.get("date"),request.form.get("address"),request.form.get("email"),request.form.get("phone_number"))
             mail.send(msg)
 
