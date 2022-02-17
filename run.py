@@ -1,5 +1,5 @@
 import os
-
+from flask_mail import Mail, Message
 from flask import (
     Flask, render_template, flash, redirect, 
     session, request, url_for)
@@ -15,6 +15,15 @@ app = Flask(__name__)
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
+
+app.config['MAIL_SERVER']='smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USERNAME'] = os.environ.get("nilssonstadtjanst@gmail.com")
+app.config['MAIL_PASSWORD'] = s.environ.get('obtmimgynaxizidz')
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USE_SSL'] = False
+mail = Mail(app)
+
 
 mongo = PyMongo(app)
 
@@ -93,7 +102,7 @@ def profile(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
-    if session["user"]:    
+    if session["user"]:
         return render_template("profile.html", username=username)
     
     return render_template(url_for('login'))
@@ -110,19 +119,40 @@ def logout():
 @app.route("/add_task", methods=["GET", "POST"])
 def add_task():
     if request.method == "POST":
-        is_urgent = "on" if request.form.get("is_urgent") else "off"
-        task = {
-            "category_name": request.form.get("category_name"),
-            "description": request.form.get("description"),
-            "date": request.form.get("date"),
-            "address": request.form.get("address"),
-            "phone_number": request.form.get("phone_number"), 
-            "is_urgent": is_urgent,
-            "created_by": session["user"]
-        }
-        mongo.db.tasks.insert_one(task)
-        flash("Booking Successfully Added")
-        return redirect(url_for("index"))
+        if "user" in session:
+            is_urgent = "on" if request.form.get("is_urgent") else "off"
+            task = {
+                "category_name": request.form.get("category_name"),
+                "description": request.form.get("description"),
+                "date": request.form.get("date"),
+                "address": request.form.get("address"),
+                "email": request.form.get("email"),
+                "phone_number": request.form.get("phone_number"), 
+                "is_urgent": is_urgent,
+                "created_by": session["user"]
+            }
+            mongo.db.tasks.insert_one(task)
+            flash("Booking Successfully Added")
+            return redirect(url_for("index"))
+        else:
+            is_urgent = "on" if request.form.get("is_urgent") else "off"
+            task = {
+                "category_name": request.form.get("category_name"),
+                "description": request.form.get("description"),
+                "date": request.form.get("date"),
+                "address": request.form.get("address"),
+                "email": request.form.get("email"),
+                "phone_number": request.form.get("phone_number"), 
+                "is_urgent": is_urgent,
+            }
+            mongo.db.tasks.insert_one(task)
+
+            msg = Message('Bokning mottagen', sender='info@nilssonsstadtjanst.se', recipients=[request.form.get("email")])
+            msg.body = 'Du har bokat: {} \n description: {} \n Tid och datum: {} \n Address: {} \n email: {} \n Telefonnummer: {} \n'.format(request.form.get("category_name"),request.form.get("description"),request.form.get("date"),request.form.get("address"),request.form.get("email"),request.form.get("phone_number"))
+            mail.send(msg)
+
+            flash("Booking Successfully Updated")
+            return redirect(url_for("index"))
 
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("add_task.html", categori=categories)
@@ -144,7 +174,6 @@ def update_task(task_id):
         mongo.db.tasks.update({"_id": ObjectId(task_id)}, submit)
         flash("Booking Successfully Updated")
         return redirect(url_for("index"))
-
     task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)})   
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("update_task.html", task=task, categori=categories)
